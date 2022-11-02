@@ -9,6 +9,7 @@ use App\Models\OrderList;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
@@ -139,6 +140,15 @@ class OrderController extends Controller
 
     public function cancelOrder($id) {
         $order = Order::find($id);
+        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $id)->get();
+        if ($order->สถานะ === "รอชำระเงิน") {
+            foreach ($orderLists as $orderList) {
+                $product = Product::find($orderList->รหัสสินค้า);
+                $product->จำนวนสินค้าคงคลัง += $orderList->จำนวนสินค้า;
+                $product->จำนวนสินค้าที่ถูกจอง -= $orderList->จำนวนสินค้า;
+                $product->save();
+            }
+        }
         $order->สถานะ = 'ปฏิเสธคำสั่งซื้อ';
         $order->save();
         return redirect()->route('orders.denied');
@@ -146,6 +156,19 @@ class OrderController extends Controller
 
     public function acceptOrder($id) {
         $order = Order::find($id);
+        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $id)->get();
+        foreach ($orderLists as $orderList) {
+            $product = Product::find($orderList->รหัสสินค้า);
+            if ($orderList->จำนวนสินค้า > $product->จำนวนสินค้าคงคลัง)
+                throw ValidationException::withMessages(['ยืนยัน' => $product->ชื่อสินค้า]);
+        }
+
+        foreach ($orderLists as $orderList) {
+            $product = Product::find($orderList->รหัสสินค้า);
+            $product->จำนวนสินค้าคงคลัง -= $orderList->จำนวนสินค้า;
+            $product->จำนวนสินค้าที่ถูกจอง += $orderList->จำนวนสินค้า;
+            $product->save();
+        }
         $order->สถานะ = 'รอชำระเงิน';
         $order->save();
         return redirect()->route('orders.accept');
