@@ -23,7 +23,7 @@
 
                 <div class="relative z-0 mb-6 w-full group">
                     <label for="จำนวนสินค้าคงคลัง" class="label-gray">จำนวนสินค้าคงคลัง</label>
-                    <input type="number" class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg" name="จำนวนสินค้าคงคลัง" id="จำนวนสินค้าคงคลัง" value="{{ old('จำนวนสินค้าคงคลัง', $product->จำนวนสินค้าคงคลัง) }}" placeholder="" min="1" required>
+                    <input type="number" class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg" name="จำนวนสินค้าคงคลัง" id="จำนวนสินค้าคงคลัง" value="{{ old('จำนวนสินค้าคงคลัง', $product->จำนวนสินค้าคงคลัง) }}" placeholder="" min="0" required>
                 </div>
 
                 <div class="relative z-0 mb-6 w-full group">

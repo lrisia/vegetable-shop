@@ -3,17 +3,12 @@
 @section('content')
     <form action="{{ route('orders.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <section class="mx-auto mt-10 bg-gray-200 p-10 rounded-lg">
+        <section class="mx-8 mt-10 bg-gray-200 p-10 rounded-lg">
         <a class="mt-6 px-6 py-3 rounded-xl bg-gray-300 hover:bg-gray-400" href="/orders"><  ย้อนกลับ</a>
         <h1 class="my-10 text-center text-gray-700 text-2xl font-bold">
             สร้างคำสั่งซื้อ
         </h1>
             <div class="p-4 ml-20">
-
-    {{--                <div class="relative z-0 mb-6 w-full group">--}}
-    {{--                    <label for="วันที่สั่งซื้อ" class="label-gray">วันที่สั่งซื้อ</label>--}}
-    {{--                    <input type="date" class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg" name="วันที่สั่งซื้อ" id="วันที่สั่งซื้อ" placeholder="">--}}
-    {{--                </div>--}}
 
                 <div class="relative z-0 mb-6 w-full group">
                     @if ($errors->has('วันที่นัดรับสินค้า'))
@@ -57,30 +52,30 @@
                         <th scope="col" class="py-3 px-6">ราคาสินค้าต่อหน่วย</th>
                         <th scope="col" class="py-3 px-6">จำนวนสินค้าคงคลัง</th>
                         <th scope="col" class="py-3 px-6">จำนวนสินค้าที่ถูกจอง</th>
-                        <th scope="col" class="w-1/12"></th>
+                        <th scope="col" class="py-3 px-6">จำนวนสินค้า</th>
                     </tr>
                     </thead>
 
                     <tbody class="m-2">
                     @foreach($products as $product)
                         <tr class="border-t">
-                            <td class="py-3 px-6">
+                            <td class="py-4 px-6">
                                 {{ $product->id }}
                             </td>
-                            <td class="py-3 px-6">
+                            <td class="py-4 px-6">
                                 {{ $product->ชื่อสินค้า }}
                             </td>
-                            <td class="py-3 px-6">
+                            <td class="py-4 px-6">
                                 {{ $product->ราคาสินค้าต่อหน่วย }}
                             </td>
-                            <td class="py-3 px-6">
+                            <td class="py-4 px-6">
                                 {{ $product->จำนวนสินค้าคงคลัง }}
                             </td>
-                            <td class="py-3 px-6">
+                            <td class="py-4 px-6">
                                 {{ $product->จำนวนสินค้าที่ถูกจอง }}
                             </td>
                             <td>
-                                <div class="">
+                                <div class="ml-10">
                                     <input type="number"
                                            class="border-2 border-gray-300 rounded-lg mr-6"
                                            name="จำนวนสินค้า" id="จำนวนสินค้า" placeholder="0" min="0" max="{{ $product->จำนวนสินค้าคงคลัง }}" value="{{ old('จำนวนสินค้า'.$product->id) }}">

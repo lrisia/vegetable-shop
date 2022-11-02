@@ -95,8 +95,21 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $orderList = OrderList::where('รหัสคำสั่งซื้อ', $order->id)->get();
-        return view('orders.show', ['order' => $order, 'orderLists' => $orderList]);
+        $orders = Order::all();
+        $customer = Customer::find($order->รหัสลูกค้า);
+        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $order->id)->get();
+        $total = 0;
+        foreach ($orderLists as $orderList) {
+            $total += $orderList->ราคารวมย่อย;
+        }
+        return view('orders.show', [
+            'order' => $order,
+            'customer' => $customer,
+            'orderLists' => $orderLists,
+            'products' => Product::all(),
+            'total' => $total,
+            'employee' => Employee::find($order->รหัสพนักงาน)
+        ]);
     }
 
     /**

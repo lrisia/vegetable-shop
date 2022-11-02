@@ -11,11 +11,6 @@
                 @csrf
 
                 <div class="relative z-0 mb-6 w-full group">
-                    <label for="วันที่ออกใบเสร็จ">วันที่ออกใบเสร็จ</label>
-                    <input type="date" class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg" name="วันที่ออกใบเสร็จ" id="วันที่ออกใบเสร็จ">
-                </div>
-
-                <div class="relative z-0 mb-6 w-full group">
                     <label for="รหัสคำสั่งซื้อ" class="mr-10">รหัสคำสั่งซื้อ</label>
                     <select name="รหัสคำสั่งซื้อ" id="รหัสคำสั่งซื้อ"  class="p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg">
                         @foreach($orders as $order)
