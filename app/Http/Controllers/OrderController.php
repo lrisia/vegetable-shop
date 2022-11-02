@@ -17,8 +17,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::get();
-        return view('orders.index', ['orders' => $orders]);
+//        $orders = Order::get();
+//        return view('orders.index', ['orders' => $orders]);
+        return redirect()->route('orders.ordering');
     }
 
     /**
@@ -104,5 +105,58 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function cancelOrder($id) {
+        $order = Order::find($id);
+        $order->สถานะ = 'ปฏิเสธคำสั่งซื้อ';
+        $order->save();
+        return redirect()->route('orders.denied');
+    }
+
+    public function acceptOrder($id) {
+        $order = Order::find($id);
+        $order->สถานะ = 'รอชำระเงิน';
+        $order->save();
+        return redirect()->route('orders.accept');
+    }
+
+    public function paidOrder($id) {
+        $order = Order::find($id);
+        $order->สถานะ = 'รอรับสินค้า';
+        $order->save();
+        return redirect()->route('orders.waiting');
+    }
+
+    public function takeOrder($id) {
+        $order = Order::find($id);
+        $order->สถานะ = 'เสร็จสิ้น';
+        $order->save();
+        return redirect()->route('orders.done');
+    }
+
+    public function orderingPage() {
+        $orders = Order::where('สถานะ', 'รอดำเนินการ')->get();
+        return view('orders.index_ordering', ['orders' => $orders]);
+    }
+
+    public function acceptPage() {
+        $orders = Order::where('สถานะ', 'รอชำระเงิน')->get();
+        return view('orders.index_accept', ['orders' => $orders]);
+    }
+
+    public function deniedPage() {
+        $orders = Order::where('สถานะ', 'ปฏิเสธคำสั่งซื้อ')->get();
+        return view('orders.index_denied', ['orders' => $orders]);
+    }
+
+    public function waitingPage() {
+        $orders = Order::where('สถานะ', 'รอรับสินค้า')->get();
+        return view('orders.index_waiting', ['orders' => $orders]);
+    }
+
+    public function donePage() {
+        $orders = Order::where('สถานะ', 'เสร็จสิ้น')->get();
+        return view('orders.index_done', ['orders' => $orders]);
     }
 }
