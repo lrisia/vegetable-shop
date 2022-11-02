@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Employee;
+use App\Models\OrderList;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -32,7 +34,13 @@ class OrderController extends Controller
         $orders = Order::all();
         $customers = Customer::all();
         $employees = Employee::all();
-        return view('orders.create', ['orders' => $orders, 'customers' => $customers, 'employees' => $employees]);
+        $products = Product::all();
+        return view('orders.create', [
+            'orders' => $orders,
+            'customers' => $customers,
+            'employees' => $employees,
+            'products' => $products
+        ]);
     }
 
     /**
@@ -44,7 +52,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'วันที่นัดรับสินค้า' => ['required'],
+            'วันที่นัดรับสินค้า' => 'required|date|after:yesterday',
         ]);
         $order = new Order;
         $order->วันที่สั่งซื้อ = Carbon::now();
@@ -52,6 +60,29 @@ class OrderController extends Controller
         $order->รหัสลูกค้า = $request->input('รหัสลูกค้า');
         $order->รหัสพนักงาน = $request->input('รหัสพนักงาน');
         $order->save();
+
+        $products = array_filter($request->except('_token'), function ($key) {
+            if (str_contains($key, "จำนวนสินค้า")) return true;
+        }, ARRAY_FILTER_USE_KEY);
+
+        $total = 0;
+
+        foreach ($products as $key => $amount) {
+            if (is_null($amount)) continue;
+            $product_id = explode("_", $key)[1];
+            $product = Product::find($product_id);
+            $orderList = new OrderList;
+            $orderList->รหัสคำสั่งซื้อ = $order->id;
+            $orderList->รหัสสินค้า = $product_id;
+            $orderList->จำนวนสินค้า = $amount;
+            $orderList->ราคารวมย่อย = $amount * $product->ราคาสินค้าต่อหน่วย;
+            $orderList->save();
+
+            $total += $orderList->ราคารวมย่อย;
+        }
+        $order->ราคารวมทั้งหมด = $total;
+        $order->save();
+
         return redirect()->route('orders.show', [ 'order' => $order->id ]);
     }
 
@@ -63,9 +94,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $customers = Customer::all();
-        $employees = Employee::all();
-        return view('orders.show', ['order' => $order, 'customers' => $customers, 'employees' => $employees]);
+        $orderList = OrderList::where('รหัสคำสั่งซื้อ', $order->id)->get();
+        return view('orders.show', ['order' => $order, 'orderLists' => $orderList]);
     }
 
     /**

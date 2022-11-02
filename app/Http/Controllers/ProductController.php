@@ -39,7 +39,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'ชื่อสินค้า' => ['required', 'max:30'],
             'ราคาสินค้าต่อหน่วย' => ['required', 'integer', 'min:1'],
-            'จำนวนสินค้าคงคลัง' => ['required', 'integer', 'min:1'],
+            'จำนวนสินค้าคงคลัง' => ['required', 'integer', 'min:0'],
         ]);
         $product = new Product();
         $product->ชื่อสินค้า = $request->input('ชื่อสินค้า');

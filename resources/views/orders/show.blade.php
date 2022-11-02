@@ -14,6 +14,16 @@
             <p> ชื่อพนักงาน: {{ $order->รหัสพนักงาน }}</p>
             <p> สถานะ: {{ $order->สถานะ }}</p>
         </div>
+        <h1 class="text-2xl">รายการสินค้าทั้งหมด</h1>
+        @foreach($orderLists as $orderList)
+            <div class="p-4 ml-20">
+                <p> รหัสคำสั่งซื้อ: {{ $orderList->รหัสคำสั่งซื้อ }}</p>
+                <p> รหัสสินค้า: {{ $orderList->รหัสสินค้า }}</p>
+                <p> จำนวนสินค้า: {{ $orderList->จำนวนสินค้า }}</p>
+                <p> ราคารวมย่อย: {{ $orderList->ราคารวมย่อย }}</p>
+            </div>
+        @endforeach
+        <p> ราคารวมทั้งหมด: {{ $order->ราคารวมทั้งหมด }}</p>
     </section>
 
 @endsection
