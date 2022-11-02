@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\OrderList;
+use App\Models\Product;
 use App\Models\Receipt;
 use App\Models\Employee;
 use App\Models\Order;
@@ -47,7 +50,7 @@ class ReceiptController extends Controller
         $receipt->รหัสคำสั่งซื้อ = $request->input('รหัสคำสั่งซื้อ');
         $receipt->รหัสพนักงาน = $request->input('รหัสพนักงาน');
         $receipt->save();
-        return redirect()->route('receipts.index');
+        return redirect()->route('receipts.show', ['receipt' => $receipt]);
     }
 
     /**
@@ -58,7 +61,21 @@ class ReceiptController extends Controller
      */
     public function show(Receipt $receipt)
     {
-        //
+        $order = Order::find($receipt->รหัสคำสั่งซื้อ);
+        $customer = Customer::find($order->รหัสลูกค้า);
+        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $order->id)->get();
+        $total = 0;
+        foreach ($orderLists as $orderList) {
+            $total += $orderList->ราคารวมย่อย;
+        }
+        return view('receipts.show', [
+            'receipt' => $receipt,
+            'customer' => $customer,
+            'orderLists' => $orderLists,
+            'products' => Product::all(),
+            'total' => $total,
+            'employee' => Employee::find($receipt->รหัสพนักงาน)
+        ]);
     }
 
     /**

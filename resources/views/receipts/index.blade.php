@@ -20,10 +20,10 @@
                     <th scope="col" class="py-3 px-6">รหัสพนักงาน</th>
                 </tr>
             </thead>
-            
+
             <tbody class="m-2">
                 @foreach($receipts as $receipt)
-                <tr class="border-t">
+                <tr class="border-t cursor-pointer hover:bg-gray-100" onclick="window.location='{{ route('receipts.show', ['receipt' => $receipt]) }}';">
                     <td class="py-3 px-6">
                         {{ $receipt->id }}
                     </td>
