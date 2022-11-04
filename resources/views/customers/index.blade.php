@@ -25,7 +25,7 @@
                 @foreach($customers as $customer)
                 <tr class="border-t">
                     <td class="py-3 px-6">
-                        {{ $customer->id }}
+                        {{ $customer->customer_id }}
                     </td>
                     <td class="py-3 px-6">
                         {{ $customer->ชื่อลูกค้า }}
@@ -35,7 +35,7 @@
                     </td>
                     <td>
                         <div>
-                            <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">
+                            <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300" href="{{ route('customers.edit', ['customer' => $customer->customer_id]) }}">
                                 แก้ไข
                             </a>
                         </div>

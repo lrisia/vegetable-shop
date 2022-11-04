@@ -23,8 +23,8 @@
                     @if($order->สถานะ == 'ปฏิเสธคำสั่งซื้อ')
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
-                                    {{ $order->id }}
+                                <a href=" {{ route( 'orders.show' , ['order' => $order->order_id]) }}">
+                                    {{ $order->order_id }}
                                 </a>
                             </td>
                             <td class="py-3 px-6">

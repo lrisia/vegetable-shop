@@ -7,7 +7,7 @@
             แก้ไขรายชื่อพนักงาน
         </h1>
         <div class="p-10 ml-20">
-            <form action="{{ route('employees.update', ['employee' => $employee->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('employees.update', ['employee' => $employee->employee_id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

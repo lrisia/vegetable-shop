@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
-            $table->id();
+            $table->id('receipt_id');
             $table->date('วันที่ออกใบเสร็จ');
             $table->unsignedBigInteger('รหัสคำสั่งซื้อ');
-            $table->foreign('รหัสคำสั่งซื้อ')->references('id')->on('orders');
+            $table->foreign('รหัสคำสั่งซื้อ')->references('order_id')->on('orders');
             $table->unsignedBigInteger('รหัสพนักงาน');
-            $table->foreign('รหัสพนักงาน')->references('id')->on('employees');
+            $table->foreign('รหัสพนักงาน')->references('employee_id')->on('employees');
         });
     }
 

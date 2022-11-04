@@ -14,7 +14,7 @@
                     <label for="รหัสคำสั่งซื้อ" class="mr-10">รหัสคำสั่งซื้อ</label>
                     <select name="รหัสคำสั่งซื้อ" id="รหัสคำสั่งซื้อ"  class="p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg">
                         @foreach($orders as $order)
-                            <option value="{{ $order->id }}">{{ $order->id }}</option>
+                            <option value="{{ $order->order_id }}">{{ $order->order_id }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -23,7 +23,7 @@
                     <label for="ชื่อพนักงาน" class="label-gray">ชื่อพนักงาน</label>
                     <select name="รหัสพนักงาน" id="รหัสพนักงาน"  class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg">
                         @foreach($employees as $employee)
-                            <option value="{{ $employee->id }}">{{ $employee->ชื่อพนักงาน }}</option>
+                            <option value="{{ $employee->employee_id }}">{{ $employee->ชื่อพนักงาน }}</option>
                         @endforeach
                     </select>
                 </div>

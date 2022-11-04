@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('order_lists', function (Blueprint $table) {
             $table->unsignedBigInteger('รหัสคำสั่งซื้อ');
-            $table->foreign('รหัสคำสั่งซื้อ')->references('id')->on('orders');
+            $table->foreign('รหัสคำสั่งซื้อ')->references('order_id')->on('orders');
             $table->unsignedBigInteger('รหัสสินค้า');
-            $table->foreign('รหัสสินค้า')->references('id')->on('products');
+            $table->foreign('รหัสสินค้า')->references('product_id')->on('products');
             $table->integer('จำนวนสินค้า');
             $table->integer('ราคารวมย่อย');
         });

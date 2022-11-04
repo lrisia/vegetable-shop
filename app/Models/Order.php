@@ -9,6 +9,7 @@ class Order extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = 'order_id';
 
     public function customer()
     {

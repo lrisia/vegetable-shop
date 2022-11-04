@@ -9,6 +9,7 @@ class Employee extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = 'employee_id';
 
     public function orders()
     {

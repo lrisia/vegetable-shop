@@ -22,7 +22,7 @@
                     <label for="ชื่อลูกค้า" class="label-gray">ชื่อลูกค้า</label>
                     <select name="รหัสลูกค้า" id="รหัสลูกค้า"  class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg">
                         @foreach($customers as $customer)
-                            <option value="{{ $customer->id }}">{{ $customer->ชื่อลูกค้า }}</option>
+                            <option value="{{ $customer->customer_id }}">{{ $customer->ชื่อลูกค้า }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -31,7 +31,7 @@
                     <label for="ชื่อพนักงาน" class="label-gray">ชื่อพนักงาน</label>
                     <select name="รหัสพนักงาน" id="รหัสพนักงาน"  class="ml-5 p-2 pl-4 w-3/4 border-2 border-gray-300 rounded-lg">
                         @foreach($employees as $employee)
-                            <option value="{{ $employee->id }}">{{ $employee->ชื่อพนักงาน }}</option>
+                            <option value="{{ $employee->employee_id }}">{{ $employee->ชื่อพนักงาน }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -60,7 +60,7 @@
                     @foreach($products as $product)
                         <tr class="border-t">
                             <td class="py-4 px-6">
-                                {{ $product->id }}
+                                {{ $product->product_id }}
                             </td>
                             <td class="py-4 px-6">
                                 {{ $product->ชื่อสินค้า }}
@@ -78,10 +78,10 @@
                                 <div class="ml-10">
                                     <input type="number"
                                            class="border-2 border-gray-300 rounded-lg mr-6"
-                                           name="จำนวนสินค้า" id="จำนวนสินค้า" placeholder="0" min="0" max="{{ $product->จำนวนสินค้าคงคลัง }}" value="{{ old('จำนวนสินค้า'.$product->id) }}">
+                                           name="จำนวนสินค้า" id="จำนวนสินค้า" placeholder="0" min="0" max="{{ $product->จำนวนสินค้าคงคลัง }}" value="{{ old('จำนวนสินค้า'.$product->product_id) }}">
                                 </div>
                                 <script>
-                                    var count = {{ $product->id }};
+                                    var count = {{ $product->product_id }};
                                     document.getElementById("จำนวนสินค้า").setAttribute("name", "จำนวนสินค้า_" + count);
                                     document.getElementById("จำนวนสินค้า").id = "จำนวนสินค้า_" + count;
                                 </script>
