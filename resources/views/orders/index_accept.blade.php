@@ -25,8 +25,8 @@
                 @if($order->สถานะ == 'รอชำระเงิน')
                     <tr class="border-t hover:bg-gray-100">
                         <td class="py-3 px-4">
-                            <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
-                                {{ $order->id }}
+                            <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
+                                {{ $order->รหัสคำสั่งซื้อ }}
                             </a>
                         </td>
                         <td class="py-3 px-6">
@@ -53,13 +53,13 @@
                         </td>
                         <td>
                             <div>
-                                <a  href="{{ route('orders.cancel', ['id' => $order->id]) }}"
+                                <a  href="{{ route('orders.cancel', ['id' => $order->รหัสคำสั่งซื้อ]) }}"
                                     class="text-sm px-2 py-1.5 mx-3 my-2 ml-0.5 rounded bg-red-400 hover:bg-red-300"
                                 >
                                     ปฏิเสธ
                                 </a>
                             </div>
-                            <form action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="get">
+                            <form action="{{ route('orders.cancel', ['id' => $order->รหัสคำสั่งซื้อ]) }}" method="get">
                                 @csrf
 {{--                                <div hidden id="popup">--}}
 {{--                                    <div id="popup-modal" tabindex="-1"--}}
@@ -104,7 +104,7 @@
                         <td>
                             <div>
                                 <a class="text-sm p-2 m-3 ml-0.5 rounded bg-green-300 hover:bg-green-200"
-                                   href="{{ route('orders.paid', ['id' => $order->id]) }}">
+                                   href="{{ route('orders.paid', ['id' => $order->รหัสคำสั่งซื้อ]) }}">
                                     ชำระแล้ว
                                 </a>
                             </div>

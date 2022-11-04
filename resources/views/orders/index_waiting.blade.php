@@ -24,8 +24,8 @@
                     @if($order->สถานะ == 'รอรับสินค้า')
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
-                                    {{ $order->id }}
+                                <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
+                                    {{ $order->รหัสคำสั่งซื้อ }}
                                 </a>
                             </td>
                             <td class="py-3 px-6">
@@ -53,7 +53,7 @@
                             <td>
                                 <div>
                                     <a class="text-sm p-2 m-3 ml-0.5 rounded bg-green-300 hover:bg-green-200"
-                                       href="{{ route('orders.take', ['id' => $order->id]) }}">
+                                       href="{{ route('orders.take', ['id' => $order->รหัสคำสั่งซื้อ]) }}">
                                         เสร็จสิ้น
                                     </a>
                                 </div>

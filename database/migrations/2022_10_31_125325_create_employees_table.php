@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id();
+            $table->id('รหัสพนักงาน');
             $table->string('ชื่อพนักงาน', 30);
             $table->char('เบอร์โทรพนักงาน', 10);
         });

@@ -7,7 +7,7 @@
             แก้ไขสินค้า
         </h1>
         <div class="p-3 ml-20">
-            <form action="{{ route('products.update', ['product' => $product->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.update', ['product' => $product->รหัสสินค้า]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

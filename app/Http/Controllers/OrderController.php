@@ -73,7 +73,7 @@ class OrderController extends Controller
             $product_id = explode("_", $key)[1];
             $product = Product::find($product_id);
             $orderList = new OrderList;
-            $orderList->รหัสคำสั่งซื้อ = $order->id;
+            $orderList->รหัสคำสั่งซื้อ = $order->รหัสคำสั่งซื้อ;
             $orderList->รหัสสินค้า = $product_id;
             $orderList->จำนวนสินค้า = $amount;
             $orderList->ราคารวมย่อย = $amount * $product->ราคาสินค้าต่อหน่วย;
@@ -84,7 +84,7 @@ class OrderController extends Controller
         $order->ราคารวมทั้งหมด = $total;
         $order->save();
 
-        return redirect()->route('orders.show', [ 'order' => $order->id ]);
+        return redirect()->route('orders.show', [ 'order' => $order->รหัสคำสั่งซื้อ ]);
     }
 
     /**
@@ -97,7 +97,7 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $customer = Customer::find($order->รหัสลูกค้า);
-        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $order->id)->get();
+        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $order->รหัสคำสั่งซื้อ)->get();
         $total = 0;
         foreach ($orderLists as $orderList) {
             $total += $orderList->ราคารวมย่อย;

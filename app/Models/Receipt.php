@@ -9,6 +9,6 @@ class Receipt extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
+    protected $primaryKey = 'รหัสใบเสร็จ';
     
 }

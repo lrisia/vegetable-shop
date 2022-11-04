@@ -7,7 +7,7 @@
             แก้ไขรายชื่อลูกค้า
         </h1>
         <div class="p-10 ml-20">
-            <form action="{{ route('customers.update', ['customer' => $customer->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('customers.update', ['customer' => $customer->รหัสลูกค้า]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

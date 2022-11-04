@@ -27,7 +27,7 @@
                 @foreach($products as $product)
                 <tr class="border-t">
                     <td class="py-3 px-6">
-                        {{ $product->id }}
+                        {{ $product->รหัสสินค้า }}
                     </td>
                     <td class="py-3 px-6">
                         {{ $product->ชื่อสินค้า }}
@@ -43,7 +43,7 @@
                     </td>
                     <td>
                         <div>
-                            <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300" href="{{ route('products.edit', ['product' => $product->id]) }}">
+                            <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300" href="{{ route('products.edit', ['product' => $product->รหัสสินค้า]) }}">
                                 แก้ไข
                             </a>
                         </div>

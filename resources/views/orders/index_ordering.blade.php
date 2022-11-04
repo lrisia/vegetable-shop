@@ -37,8 +37,8 @@
                     @if($order->สถานะ == 'รอดำเนินการ')
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
-                                    {{ $order->id }}
+                                <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
+                                    {{ $order->รหัสคำสั่งซื้อ }}
                                 </a>
                             </td>
                             <td class="py-3 px-6">
@@ -66,20 +66,20 @@
                             <td>
                                 <div>
                                     <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300"
-                                       href="{{ route('orders.edit', ['order' => $order->id]) }}">
+                                       href="{{ route('orders.edit', ['order' => $order->รหัสคำสั่งซื้อ]) }}">
                                         แก้ไข
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <a  href="{{ route('orders.cancel', ['id' => $order->id]) }}"
+                                    <a  href="{{ route('orders.cancel', ['id' => $order->รหัสคำสั่งซื้อ]) }}"
                                         class="text-sm px-2 py-1.5 mx-3 my-2 ml-0.5 rounded bg-red-400 hover:bg-red-300"
                                         >
                                         ปฏิเสธ
                                     </a>
                                 </div>
-{{--                                <form action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="get">--}}
+{{--                                <form action="{{ route('orders.cancel', ['id' => $order->รหัสคำสั่งซื้อ]) }}" method="get">--}}
 {{--                                    @csrf--}}
 {{--                                    <div hidden id="popup">--}}
 {{--                                        <div id="popup-modal" tabindex="-1"--}}
@@ -124,7 +124,7 @@
                             <td>
                                 <div>
                                     <a class="text-sm p-2 m-3 ml-0.5 rounded bg-blue-300 hover:bg-blue-200"
-                                       href="{{ route('orders.acceptOrder', ['id' => $order->id]) }}">
+                                       href="{{ route('orders.acceptOrder', ['id' => $order->รหัสคำสั่งซื้อ]) }}">
                                         ยอมรับ
                                     </a>
                                 </div>

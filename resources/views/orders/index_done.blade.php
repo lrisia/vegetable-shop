@@ -22,8 +22,8 @@
                 @foreach($orders as $order)
                     <tr class="border-t hover:bg-gray-100">
                         <td class="py-3 px-4">
-                            <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
-                                {{ $order->id }}
+                            <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
+                                {{ $order->รหัสคำสั่งซื้อ }}
                             </a>
                         </td>
                         <td class="py-3 px-6">
