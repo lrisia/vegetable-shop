@@ -9,7 +9,6 @@ class Customer extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $primaryKey = 'รหัสลูกค้า';
 
     public function orders()
     {

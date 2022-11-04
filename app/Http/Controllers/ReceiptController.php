@@ -63,7 +63,7 @@ class ReceiptController extends Controller
     {
         $order = Order::find($receipt->รหัสคำสั่งซื้อ);
         $customer = Customer::find($order->รหัสลูกค้า);
-        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $order->รหัสคำสั่งซื้อ)->get();
+        $orderLists = OrderList::where('รหัสคำสั่งซื้อ', $order->id)->get();
         $total = 0;
         foreach ($orderLists as $orderList) {
             $total += $orderList->ราคารวมย่อย;

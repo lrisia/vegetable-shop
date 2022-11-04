@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id('รหัสลูกค้า');
+            $table->id();
             $table->string('ชื่อลูกค้า', 30);
             $table->char('เบอร์โทรลูกค้า', 10);
         });

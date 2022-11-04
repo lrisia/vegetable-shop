@@ -25,7 +25,7 @@
                 @foreach($receipts as $receipt)
                 <tr class="border-t cursor-pointer hover:bg-gray-100" onclick="window.location='{{ route('receipts.show', ['receipt' => $receipt]) }}';">
                     <td class="py-3 px-6">
-                        {{ $receipt->รหัสใบเสร็จ }}
+                        {{ $receipt->id }}
                     </td>
                     <td class="py-3 px-6">
                         {{ $receipt->วันที่ออกใบเสร็จ }}

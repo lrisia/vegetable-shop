@@ -13,7 +13,7 @@
             <div class="w-full h-0.5 bg-[#80b319]"></div>
             <div class="flex justify-between p-4 ml-8">
                 <div>
-                    <p class="font-bold">รหัสคำสั่งซื้อ: {{ $order->รหัสคำสั่งซื้อ }}</p>
+                    <p class="font-bold">รหัสคำสั่งซื้อ: {{ $order->id }}</p>
                     <p class="font-bold"> วันที่สั่งซื้อ: {{ $order->วันที่สั่งซื้อ }}</p>
                     <p class="font-bold"> วันที่นัดรับสินค้า: {{ $order->วันที่นัดรับสินค้า }}</p>
                 </div>

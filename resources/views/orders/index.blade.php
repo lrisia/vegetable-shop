@@ -26,8 +26,8 @@
                     @if($order->สถานะ == 'รอดำเนินการ')
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
-                                    {{ $order->รหัสคำสั่งซื้อ }}
+                                <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
+                                    {{ $order->id }}
                                 </a>
                             </td>
                             <td class="py-3 px-6">
@@ -55,7 +55,7 @@
                             <td>
                                 <div>
                                     <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300"
-                                       href="{{ route('orders.edit', ['order' => $order->รหัสคำสั่งซื้อ]) }}">
+                                       href="{{ route('orders.edit', ['order' => $order->id]) }}">
                                         แก้ไข
                                     </a>
                                 </div>
@@ -68,7 +68,7 @@
                                         ปฏิเสธ
                                     </button>
                                 </div>
-                                <form action="{{ route('orders.cancel', ['id' => $order->รหัสคำสั่งซื้อ]) }}" method="get">
+                                <form action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="get">
                                     @csrf
                                     <div hidden id="popup">
                                         <div id="popup-modal" tabindex="-1"
@@ -113,7 +113,7 @@
                             <td>
                                 <div>
                                     <a class="text-sm p-2 m-3 ml-0.5 rounded bg-blue-300 hover:bg-blue-200"
-                                       href="{{ route('orders.accept', ['id' => $order->รหัสคำสั่งซื้อ]) }}">
+                                       href="{{ route('orders.accept', ['id' => $order->id]) }}">
                                         ยอมรับ
                                     </a>
                                 </div>
@@ -149,8 +149,8 @@
                     @if($order->สถานะ == 'รอชำระเงิน')
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
-                                    {{ $order->รหัสคำสั่งซื้อ }}
+                                <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
+                                    {{ $order->id }}
                                 </a>
                             </td>
                             <td class="py-3 px-6">
@@ -183,7 +183,7 @@
                                         ปฏิเสธ
                                     </button>
                                 </div>
-                                <form action="{{ route('orders.cancel', ['id' => $order->รหัสคำสั่งซื้อ]) }}" method="get">
+                                <form action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="get">
                                     @csrf
                                     <div hidden id="popup">
                                         <div id="popup-modal" tabindex="-1"
@@ -228,7 +228,7 @@
                             <td>
                                 <div>
                                     <a class="text-sm p-2 m-3 ml-0.5 rounded bg-green-300 hover:bg-green-200"
-                                       href="{{ route('orders.accept', ['id' => $order->รหัสคำสั่งซื้อ]) }}">
+                                       href="{{ route('orders.accept', ['id' => $order->id]) }}">
                                         ชำระแล้ว
                                     </a>
                                 </div>
@@ -262,8 +262,8 @@
                     @if($order->สถานะ == 'ปฏิเสธคำสั่งซื้อ')
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href=" {{ route( 'orders.show' , ['order' => $order->รหัสคำสั่งซื้อ]) }}">
-                                    {{ $order->รหัสคำสั่งซื้อ }}
+                                <a href=" {{ route( 'orders.show' , ['order' => $order->id]) }}">
+                                    {{ $order->id }}
                                 </a>
                             </td>
                             <td class="py-3 px-6">

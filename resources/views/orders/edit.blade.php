@@ -6,7 +6,7 @@
             แก้ไขคำสั่งซื้อ
         </h1>
         <div class="p-4 ml-20">
-            <form action="{{ route('orders.update', ['order' => $order->รหัสคำสั่งซื้อ]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('orders.update', ['order' => $order->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

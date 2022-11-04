@@ -9,7 +9,6 @@ class Order extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $primaryKey = 'รหัสคำสั่งซื้อ';
 
     public function customer()
     {

@@ -25,7 +25,7 @@
                 @foreach($employees as $employee)
                 <tr class="border-t">
                     <td class="py-3 px-6">
-                        {{ $employee->รหัสพนักงาน }}
+                        {{ $employee->id }}
                     </td>
                     <td class="py-3 px-6">
                         {{ $employee->ชื่อพนักงาน }}
@@ -35,7 +35,7 @@
                     </td>
                     <td>
                         <div>
-                            <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300" href="{{ route('employees.edit', ['employee' => $employee->รหัสพนักงาน]) }}">
+                            <a class="text-gray-600 text-sm p-2 m-3 ml-0.5 rounded bg-gray-200 hover:bg-gray-300" href="{{ route('employees.edit', ['employee' => $employee->id]) }}">
                                 แก้ไข
                             </a>
                         </div>
