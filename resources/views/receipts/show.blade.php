@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex items-end justify-end space-x-3 my-2">
-    <button class="px-4 py-2 text-sm bg-[#B3BA1E] font-bold rounded" onclick="printDiv('printThis')">Print</button>                
+    <button class="px-4 py-2 text-sm bg-[#B3BA1E] font-bold rounded" onclick="printDiv('printThis')">Print</button>
 </div>
 <section class="mt-10" id="printThis">
     <div class="flex items-center justify-center">
@@ -11,7 +11,7 @@
                 <div class="flex items-center">
                     <img src="https://cdn-icons-png.flaticon.com/512/1617/1617578.png" alt="" style="width: 70px">
                     <h1 class="text-3xl font-bold mx-2 ml-4">ใบเสร็จ</h1>
-                </div>      
+                </div>
             </div>
             <div class="w-full h-0.5 bg-[#80b319]"></div>
             <div class="flex justify-between p-4 ml-6">
@@ -61,13 +61,17 @@
                             <tr class="">
                                 <td colspan="3"></td>
                                 <td class="font-bold">ราคารวมทั้งสิ้น: </td>
-                                <td class="font-bold"><b>{{ number_format($total) }} บาทถ้วน</b></td>
+                                <td class="font-bold"><b>{{ number_format($total)." บาท" }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                                <td class="font-bold"><b>{{ $total_text }}</b></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
