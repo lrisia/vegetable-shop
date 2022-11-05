@@ -54,14 +54,11 @@
                                 <td class="px-6 py-4">{{ number_format($products->find($orderList->รหัสสินค้า)->ราคาสินค้าต่อหน่วย) }}</td>
                                 <td class="px-6 py-4">{{ number_format($orderList->ราคารวมย่อย) }}</td>
                             </tr>
-                            @endforeach
-                            <tr class="">
-                                <td colspan="3"></td>
-                                <td class="font-bold">ราคารวมทั้งสิ้น: </td>
-                                <td class="font-bold"><b>{{ number_format($total) }} บาทถ้วน</b></td>
-                            </tr>
+                            @endforeach            
                         </tbody>
                     </table>
+                    <div class="font-bold text-end mr-4">ราคารวมทั้งสิ้น: <b>{{ number_format($total) }} บาท</b></div>
+                    <div class="font-bold text-end mr-4"><b>{{ $total_text }}</b></div>
                 </div>
             </div>
             
