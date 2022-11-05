@@ -45,7 +45,7 @@
                                 </a>
                             </td>
                             <td class="py-3 px-6">
-                                {{ $order->ราคารวมทั้งหมด }}
+                                {{ number_format($order->ราคารวมทั้งหมด) }}
                             </td>
                             <td class="py-3 px-6">
                                 {{ $order->สถานะ }}

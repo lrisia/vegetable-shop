@@ -66,13 +66,13 @@
                                 {{ $product->ชื่อสินค้า }}
                             </td>
                             <td class="py-4 px-6">
-                                {{ $product->ราคาสินค้าต่อหน่วย }}
+                                {{ number_format($product->ราคาสินค้าต่อหน่วย) }}
                             </td>
                             <td class="py-4 px-6">
-                                {{ $product->จำนวนสินค้าคงคลัง }}
+                                {{ number_format($product->จำนวนสินค้าคงคลัง) }}
                             </td>
                             <td class="py-4 px-6">
-                                {{ $product->จำนวนสินค้าที่ถูกจอง }}
+                                {{ number_format($product->จำนวนสินค้าที่ถูกจอง) }}
                             </td>
                             <td>
                                 <div class="ml-10">
