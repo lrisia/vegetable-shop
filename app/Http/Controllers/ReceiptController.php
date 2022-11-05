@@ -111,4 +111,32 @@ class ReceiptController extends Controller
     {
         //
     }
+
+    public function filter(Request $request) {
+        $receipts = Receipt::get();
+        $filtered = false;
+        if (!is_null($request->get('receipt_id'))) {
+            $filtered = true;
+            $receipts = $receipts->where('receipt_id', $request->get('receipt_id'));
+        }
+        if (!is_null($request->get('date_old'))) {
+            $filtered = true;
+            $receipts = $receipts->where('วันที่ออกใบเสร็จ', '>=', $request->get('date_old'));
+        }
+        if (!is_null($request->get('date_new'))) {
+            $filtered = true;
+            $receipts = $receipts->where('วันที่ออกใบเสร็จ', '<=', $request->get('date_new'));
+        }
+        if (!is_null($request->get('order_id'))) {
+            $filtered = true;
+            $receipts = $receipts->where('รหัสคำสั่งซื้อ', $request->get('order_id'));
+        }
+        if (!is_null($request->get('employee_id'))) {
+            $filtered = true;
+            $receipts = $receipts->where('รหัสพนักงาน', $request->get('employee_id'));
+        }
+
+        if ($filtered) return view('receipts.index', ['receipts' => $receipts]);
+        return redirect()->route('receipts.index');
+    }
 }

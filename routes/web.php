@@ -27,6 +27,7 @@ Route::get('/orders/denied', [\App\Http\Controllers\OrderController::class, 'den
 Route::get('/orders/waiting', [\App\Http\Controllers\OrderController::class, 'waitingPage'])->name('orders.waiting');
 Route::get('/orders/done', [\App\Http\Controllers\OrderController::class, 'donePage'])->name('orders.done');
 Route::get('/products/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
+Route::post('/receipts/search', [\App\Http\Controllers\ReceiptController::class, 'filter'])->name('receipts.filter');
 Route::resource('/products', \App\Http\Controllers\ProductController::class);
 Route::resource('/employees', \App\Http\Controllers\EmployeeController::class);
 Route::resource('/customers', \App\Http\Controllers\CustomerController::class);
