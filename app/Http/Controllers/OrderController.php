@@ -67,7 +67,15 @@ class OrderController extends Controller
         }, ARRAY_FILTER_USE_KEY);
 
         $total = 0;
+        foreach ($products as $key => $amount) {
+            if (is_null($amount)) continue;
+            $product_id = explode("_", $key)[1];
+            $product = Product::find($product_id);
+            $total += $amount * $product->ราคาสินค้าต่อหน่วย;
+        }
+        if ($total == 0) throw ValidationException::withMessages(['error' => $product->ชื่อสินค้า]);
 
+        $total = 0;
         foreach ($products as $key => $amount) {
             if (is_null($amount)) continue;
             $product_id = explode("_", $key)[1];
@@ -162,7 +170,9 @@ class OrderController extends Controller
                 $product->save();
             }
         }
-        $order->สถานะ = 'ปฏิเสธคำสั่งซื้อ';
+        if ($order->สถานะ == 'รอชำระเงิน') $order->หมายเหตุ = 'ไม่ชำระเงินตามกำหนด';
+        if ($order->สถานะ == 'รอดำเนินการ') $order->หมายเหตุ = 'ปฏิเสธคำสั่งซื้อ';
+        $order->สถานะ = 'ยกเลิกคำสั่งซื้อ';
         $order->save();
         return redirect()->route('orders.denied');
     }
@@ -196,7 +206,7 @@ class OrderController extends Controller
 
     public function takeOrder($id) {
         $order = Order::find($id);
-        $order->สถานะ = 'เสร็จสิ้น';
+        $order->สถานะ = 'ปิดการขาย';
         $order->save();
         return redirect()->route('orders.done');
     }
@@ -212,7 +222,7 @@ class OrderController extends Controller
     }
 
     public function deniedPage() {
-        $orders = Order::where('สถานะ', 'ปฏิเสธคำสั่งซื้อ')->get();
+        $orders = Order::where('สถานะ', 'ยกเลิกคำสั่งซื้อ')->get();
         return view('orders.index_denied', ['orders' => $orders]);
     }
 
@@ -222,7 +232,7 @@ class OrderController extends Controller
     }
 
     public function donePage() {
-        $orders = Order::where('สถานะ', 'เสร็จสิ้น')->get();
+        $orders = Order::where('สถานะ', 'ปิดการขาย')->get();
         return view('orders.index_done', ['orders' => $orders]);
     }
 }

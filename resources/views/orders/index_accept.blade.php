@@ -22,7 +22,7 @@
 
             <tbody class="m-2">
             @foreach($orders as $order)
-                @if($order->สถานะ == 'รอชำระเงิน')
+
                     <tr class="border-t hover:bg-gray-100">
                         <td class="py-3 px-4">
                             <a href=" {{ route( 'orders.show' , ['order' => $order->order_id]) }}">
@@ -110,7 +110,7 @@
                             </div>
                         </td>
                     </tr>
-                @endif
+
             @endforeach
             </tbody>
         </table>

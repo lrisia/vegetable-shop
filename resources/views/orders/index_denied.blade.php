@@ -15,12 +15,13 @@
                     <th scope="col" class="py-3 px-6">รหัสพนักงาน</th>
                     <th scope="col" class="py-3 px-6">ราคารวมทั้งหมด</th>
                     <th scope="col" class="py-3 px-6">สถานะ</th>
+                    <th scope="col" class="py-3 px-6">หมายเหตุ</th>
                 </tr>
                 </thead>
 
                 <tbody class="m-2">
                 @foreach($orders as $order)
-                    @if($order->สถานะ == 'ปฏิเสธคำสั่งซื้อ')
+
                         <tr class="border-t hover:bg-gray-100">
                             <td class="py-3 px-4">
                                 <a href=" {{ route( 'orders.show' , ['order' => $order->order_id]) }}">
@@ -49,8 +50,11 @@
                             <td class="py-3 px-6">
                                 {{ $order->สถานะ }}
                             </td>
+                            <td class="py-3 px-6">
+                                {{ $order->หมายเหตุ }}
+                            </td>
                         </tr>
-                    @endif
+
                 @endforeach
                 </tbody>
             </table>
